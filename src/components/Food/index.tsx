@@ -4,7 +4,22 @@ import { Container } from "./styles";
 import api from "../../services/api";
 import { useState } from "react";
 
-export function Food(props) {
+interface Food {
+  id: number;
+  name: string;
+  description: string;
+  available: boolean;
+  image: string;
+  price: number;
+}
+
+interface FoodProps {
+  food: Food;
+  handleEditFood: (food: Food) => void;
+  handleDelete: (foodId: number) => void;
+}
+
+export function Food(props: FoodProps) {
   const { available } = props.food;
 
   const [isAvailable, setIsAvailable] = useState(available);
